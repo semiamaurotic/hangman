@@ -6,7 +6,7 @@ import subprocess as sp
 
 
 def getword():
-    # difficulty = input('Enter difficulty: Easy or Hard')
+    # difficulty = input('Enter difficulty: Easy or Hard') # future: add word length filter.
     with open('wordlist.csv') as csvfile:
         wordreader = csv.reader(csvfile)
         words = [row[0].strip() for row in wordreader]
@@ -123,13 +123,11 @@ def main():
 
     movesleft = 7
     word = getword()
-    # print(word)
     guessed = []
     display = showguess(guessed, word)
 
     while movesleft > 0 and '_' in display:
         console.clear()
-        # print('moves left: {}'.format(movesleft))
         print('Guessed: {}\n'.format(' '.join(guessed)))
         print(art[movesleft])
         guess = getguess(display, guessed)
